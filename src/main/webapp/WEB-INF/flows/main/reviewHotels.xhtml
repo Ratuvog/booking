@@ -1,0 +1,42 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	    		xmlns:ui="http://java.sun.com/jsf/facelets"
+	  			xmlns:h="http://java.sun.com/jsf/html"
+	  			xmlns:f="http://java.sun.com/jsf/core"
+	  			xmlns:p="http://primefaces.org/ui"
+				template="/WEB-INF/layouts/standard.xhtml">
+<ui:define name="content">
+<div>
+	<h1>Поиск отелей</h1>
+	<h3 class="alt">Выберите отель и нажмите кнопку "Просмотр"</h3>
+	<hr />
+</div>
+<h:form>
+	<p:dataTable id="hotels" var="h" value="#{hotels}" paginator="true" dynamic="true"
+			rows="#{hotels.pageSize}" page="#{hotels.currentPage}" lazy="true">
+        <f:facet name="header">
+        	Результаты поиска отелей<br/>
+        	<p:commandLink value="Изменить поисковый запрос" action="changeSearch" styleClass="alt" />
+        </f:facet>
+		<p:column sortBy="#{h.name}">
+			<f:facet name="header">Название</f:facet>
+			#{h.name}
+		</p:column>
+		<p:column>
+			<f:facet name="header">Адрес</f:facet>
+			#{h.address}
+		</p:column>
+		<p:column sortBy="#{h.city}">
+			<f:facet name="header">Город, Страна</f:facet>
+			#{h.city}, #{h.country}
+		</p:column> 
+		<p:column>
+			<f:facet name="header">Действие</f:facet>
+			<p:commandButton id="viewHotelLink" value="Просмотр" action="select" icon="ui-icon-search">
+				<f:setPropertyActionListener value="#{h}" target="#{hotels.selected}" />
+			</p:commandButton>
+		</p:column>
+	</p:dataTable>
+</h:form>
+</ui:define>
+</ui:composition>

@@ -1,0 +1,34 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	    		xmlns:ui="http://java.sun.com/jsf/facelets"
+	  			xmlns:h="http://java.sun.com/jsf/html"
+	  			xmlns:f="http://java.sun.com/jsf/core"
+	  			xmlns:p="http://primefaces.org/ui"
+				template="/WEB-INF/layouts/standard.xhtml">
+<ui:define name="content">
+	<h1>${hotel.name}</h1>
+	<hr/>
+	<address>
+		${hotel.country}, ${hotel.city}, ${hotel.address}
+	</address>
+	К услугам гостей этого 4-звездочного отеля, расположенного в городе Самара, всего в 300 метрах от реки Волга, круглосуточный тренажерный зал, бесплатная парковка и кондиционированные номера, в которых можно воспользоваться бесплатным Wi-Fi. Остановки транспорта находятся в 100 метрах от отеля.
+	Гостям отеля "Граф Орлов" предлагается размещение в стильных номерах и люксах с видом на реку Волга, внутренний двор или историческую часть города Самара. Номера обставлены мебелью из темного дерева и оснащены телевизором с плоским экраном, сейфами для ноутбука и мини-баром.
+	В ресторане отеля "Граф Орлов" гостям предложат блюда русской и европейской кухни. Также в распоряжении гостей бар и лаундж, где можно заказать русские закуски и напитки по своему вкусу.
+	Гости отеля "Граф Орлов" могут посетить спа-салон с гидромассажной ванной и массажным кабинетом. Помимо этого, по желанию гостей, могут быть организованы экскурсии на собственной лодке отеля "Граф Орлов". 
+
+	<p>Мы говорим на вашем языке!</p>
+
+	<h:form id="hotel">
+	    <div>
+	        Стоимость номера в сутки:&#160;
+            <h:outputText value="#{hotel.price}">
+                <f:convertNumber type="currency" currencySymbol="руб."/>
+            </h:outputText>
+	    </div>
+		<div>
+			<p:commandButton id="book" action="book" value="Забронировать номер" ajax="false" />
+			<p:commandButton id="cancel" action="cancel" value="Вернуться к поиску"/>
+		</div>
+	</h:form>
+</ui:define>
+</ui:composition>

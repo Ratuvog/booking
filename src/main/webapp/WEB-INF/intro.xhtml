@@ -1,0 +1,34 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	    		xmlns:ui="http://java.sun.com/jsf/facelets"
+	  			xmlns:h="http://java.sun.com/jsf/html"
+	  			xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:sf="http://www.springframework.org/tags/faces"
+				template="layouts/standard.xhtml">
+
+<ui:define name="notes">
+	
+</ui:define>
+
+<ui:define name="content">
+<div>
+	<h1>Добро пожаловать!</h1>
+	<h3 class="alt">Данная система обработки заказов реализована при помощи Java Spring Web Flow</h3>
+	<hr />
+	<p>
+		В приложении доступны следующие функции
+	</p>
+	<ul>
+		<li>Поиск отелей по названию, городу, стране</li>
+		<li>Постраничный вывод результатов поиска</li>
+		<li>Сохранение состояния выполнения процесса бронирования</li>
+		<li>Просмотр и отмена предыдущих заказов</li>
+		<li>Просмотр детальной информации об отелях</li>
+		<li>Оформление брони в выбранном отеле</li>
+	</ul>
+	<p>
+		<a href="main">Начать поиск отеля</a>
+	</p>
+</div>
+</ui:define>
+</ui:composition>

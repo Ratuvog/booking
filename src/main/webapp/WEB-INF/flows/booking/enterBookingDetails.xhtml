@@ -1,0 +1,113 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	    		xmlns:ui="http://java.sun.com/jsf/facelets"
+	  			xmlns:h="http://java.sun.com/jsf/html"
+	  			xmlns:f="http://java.sun.com/jsf/core"
+	  			xmlns:p="http://primefaces.org/ui"
+				template="/WEB-INF/layouts/standard.xhtml">
+<ui:define name="content">
+	<h:form id="bookingForm">
+		<p:fieldset legend="Форма бронирования номера">
+			<p:messages />
+			<div class="large">
+				${booking.hotel.name},
+				${booking.hotel.address}
+				${booking.hotel.city}, 
+				${booking.hotel.country}
+			</div>
+			<hr/>
+			<div>
+				<div class="span-4 label">
+					<h:outputLabel for="price">Стоимость за сутки:</h:outputLabel>
+				</div>
+				<div class="span-14 last">
+					<p>
+						<h:outputText id="price" value="#{booking.hotel.price}">
+							<f:convertNumber type="currency" currencySymbol="руб."/>
+						</h:outputText>
+					</p>
+				</div>					
+			</div>
+			<div class="field">
+				<div class="span-4">
+					<h:outputLabel for="checkinDate">Дата заезда:</h:outputLabel>
+				</div>
+				<div class="span-5">
+					<p>
+						<p:calendar id="checkinDate" label="Check in date" 
+							value="#{booking.checkinDate}" pattern="MM-dd-yyyy" timeZone="EST" required="true" />
+	               	</p>
+				</div>
+				<div class="span-4">
+					<h:outputLabel for="checkoutDate">Дата выезда:</h:outputLabel>
+				</div>
+				<div class="span-5 last">
+					<p>
+						<p:calendar id="checkoutDate" label="Check out date" 
+							value="#{booking.checkoutDate}" pattern="MM-dd-yyyy" timeZone="EST" required="true" />
+					</p>
+				</div>
+			</div>
+			<div class="field">
+				<div class="span-4">
+					<h:outputLabel for="beds">Число спальных мест:</h:outputLabel>
+				</div>
+				<div class="span-5">
+					<p>
+						<h:selectOneMenu id="beds" value="#{booking.beds}">
+							<f:selectItems value="#{referenceData.bedOptions}"/>
+						</h:selectOneMenu>
+					</p>	
+				</div>
+				<div class="span-4">
+					<h:outputLabel for="smoking">Номер для некурящих:</h:outputLabel>
+				</div>
+				<div id="radio" class="span-5 last">
+					<h:selectOneRadio id="smoking" value="#{booking.smoking}" layout="pageDirection">
+						<f:selectItems value="#{referenceData.smokingOptions}"/>
+					</h:selectOneRadio>
+				</div>
+			</div>
+			<div class="field">
+				<div class="span-4">
+					<h:outputLabel for="creditCard">Номер кред. карты:</h:outputLabel>
+				</div>
+				<div class="span-5">
+					<p>
+						<h:inputText id="creditCard" label="Credit card number" value="#{booking.creditCard}" />
+						<p:tooltip for="creditCard" value="16-digit credit card number." style="cream" position="bottomLeft" />
+					</p>
+				</div>
+				<div class="span-4">
+					<h:outputLabel for="creditCardName">Имя держателя карты:</h:outputLabel>
+				</div>
+				<div class="span-5 last">
+					<p>
+						<h:inputText id="creditCardName" label="Credit card name" value="#{booking.creditCardName}"/>
+						<p:tooltip for="creditCardName" value="The name as it appears on the credit card" style="cream" />
+					</p>
+				</div>
+			</div>
+			<div class="field">
+				<div class="span-4">
+					<h:outputLabel for="creditCardExpiryMonth">Срок дейст. карты:</h:outputLabel>
+				</div>
+				<div class="span-14 last">
+					<p>
+						<h:selectOneMenu id="creditCardExpiryMonth" value="#{booking.creditCardExpiryMonth}">
+							<f:selectItems value="#{referenceData.creditCardExpMonths}" />
+						</h:selectOneMenu>&nbsp;
+						<h:selectOneMenu id="creditCardExpiryYear" value="#{booking.creditCardExpiryYear}">
+							<f:selectItems value="#{referenceData.creditCardExpYears}"/>
+						</h:selectOneMenu>
+					</p>
+				</div>
+			</div>
+			<div>
+				<p:commandButton id="proceed" action="proceed" value="Продолжить" update="@form" />
+				<p:commandButton id="cancel" value="Отменить" action="cancel" immediate="true" />
+			</div>		
+		</p:fieldset>
+	</h:form>
+</ui:define>
+</ui:composition>
