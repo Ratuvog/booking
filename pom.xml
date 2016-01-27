@@ -225,7 +225,8 @@
 				<configuration>
 					<source>1.6</source>
 					<target>1.6</target>
-				</configuration>
+  			        <encoding>UTF-8</encoding>
+    			</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
