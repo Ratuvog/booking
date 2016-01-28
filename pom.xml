@@ -16,6 +16,10 @@
 		<mojarra-version>2.2.12</mojarra-version>
 		<primefaces-version>5.0</primefaces-version>
 	</properties>
+	
+	<configuration>
+      <argLine>-Dfile.encoding=UTF8</argLine>
+    </configuration>
 
 	<repositories>
 		<repository>
